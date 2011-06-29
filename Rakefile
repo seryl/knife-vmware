@@ -1,4 +1,6 @@
 # encoding: utf-8
+$:.push File.expand_path("../lib", __FILE__)
+require "knife-vmware/version"
 
 require 'rubygems'
 require 'bundler'
@@ -15,10 +17,12 @@ require 'jeweler'
 Jeweler::Tasks.new do |gem|
   # gem is a Gem::Specification... see http://docs.rubygems.org/read/chapter/20 for more options
   gem.name = "knife-vmware"
+  gem.version = Knife::VMWare::VERSION
+  gem.platform = Gem::Platform::RUBY
   gem.homepage = "http://github.com/seryl/knife-vmware"
   gem.license = "MIT"
-  gem.summary = %Q{TODO: one-line summary of your gem}
-  gem.description = %Q{TODO: longer description of your gem}
+  gem.summary = %Q{VMware Support for Chef's Knife Command}
+  gem.description = gem.summary
   gem.email = "jtoft@zinio.com"
   gem.authors = ["Josh Toft"]
   # dependencies defined in Gemfile
@@ -40,7 +44,7 @@ task :default => :spec
 
 require 'rake/rdoctask'
 Rake::RDocTask.new do |rdoc|
-  version = File.exist?('VERSION') ? File.read('VERSION') : ""
+  version = Knife::VMWare::VERSION
 
   rdoc.rdoc_dir = 'rdoc'
   rdoc.title = "knife-vmware #{version}"
